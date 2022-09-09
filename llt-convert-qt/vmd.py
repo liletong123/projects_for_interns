@@ -1,7 +1,8 @@
 import sys
 import os
-from PySide6.QtWidgets import QHBoxLayout,QApplication,QPushButton,QMainWindow,QWidget,QSpacerItem,QSizePolicy,QGraphicsView,QGridLayout,QLineEdit,QLabel,QScrollArea,QVBoxLayout,QGraphicsScene
+from PySide6.QtWidgets import QHBoxLayout,QApplication,QPushButton,QWidget,QSpacerItem,QSizePolicy,QVBoxLayout,QGraphicsScene,QGraphicsView
 from PySide6 import QtWidgets
+from PySide6.QtGui import QPixmap
 
 
 class ExtplotCheck(QWidget):
@@ -14,17 +15,21 @@ class ExtplotCheck(QWidget):
         self.btn_widget = QWidget()
         self.qw_widget = QWidget()
         self.btn_widget.setLayout(self.layout)
-        self.zoomInTimes = 0
-        self.maxZoomInTimes = 22
+        # self.zoomInTimes = 0
+        # self.maxZoomInTimes = 22
         # self.graphicsScene = QGraphicsScene()
-        self.lable = QLabel()
+        # self.lable = QLabel()
+        pixmap = QPixmap("/home/user/桌面/llt/h3/h2/img/50.jpeg") 
         
-        self.wlayout.addWidget(self.lable)
-        self.setLayout(self.wlayout)
+        # self.wlayout.addWidget(self.lable)
 
-        # self.topFiller = QWidget()
-        # self.scene = QGraphicsScene()
-        # self.view = QGraphicsView(self.scene)
+
+        # self.wlayout.addWidget(self.lable)
+        # self.setLayout(self.wlayout)
+
+        self.topFiller = QWidget()
+        self.scene = QGraphicsScene()
+        self.view = QGraphicsView(self.scene)
        
         # self.layout.addWidget(self.btn2)
         self.resize(1000,600)
@@ -39,11 +44,23 @@ class ExtplotCheck(QWidget):
         # self.wlayout = QVBoxLayout()
         # self.wlayout.addWidget(self.scroll)
         
-        qg = QGraphicsView(self)
-        self.wlayout.addWidget(qg)
+        
+    
+        
         self.setLayout(self.wlayout)
+        self.sence = QGraphicsScene()
+        self.view = QGraphicsView()
+        self.view.setScene(self.sence)
+        self.wlayout.addWidget(self.view)
+        self.setLayout(self.wlayout)
+        self.sence.addPixmap(pixmap)
+      
+        
        
+
        
+
+
         self.btn1 = QPushButton(self.btn_widget)
         self.btn1.setText("打开文件")
         self.btn2 = QPushButton(self.btn_widget)
